@@ -39,6 +39,16 @@ header > nav > a {
   text-align: center;
 }
 
+#app > section > p {
+  height: 10%;
+  font-size: 1.5rem;
+}
+
+#app > section,
+#app > section > img {
+  transition: all 0.5s ease;
+}
+
 #app > section {
   position: relative;
   color: rgb(227, 227, 227);
@@ -49,22 +59,23 @@ header > nav > a {
   border-radius: 8px;
 }
 
-#app > section > p {
-  height: 10%;
-  font-size: 1.5rem;
-}
-
 #app > section > img {
   transform-origin: top center;
   height: 80%;
   width: 250px;
   object-fit: cover;
-  transition: all 0.2s ease;
-  opacity: 1;
+  transition: all 0.5s ease;
+}
+
+#app > section:hover {
+  cursor: pointer;
+  transform: scale(1.02);
 }
 
 #app > section:hover > img {
-  transform: scale(1.03);
-  cursor: pointer;
-  opacity: 0.9;
+  filter: brightness(1.2);
+}
+
+#app:has(section:hover) section:not(:hover) {
+  opacity: 0.5;
 }
