@@ -1,0 +1,17 @@
+#create {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+#create > form > label,
+#create > form > button {
+  display: block;
+  margin: 10px 0 0 0;
+}
+
+#create > form > button {
+  background-color: hsl(100, 100%, 31%);
+  color: white;
+  padding: 8px 16px;
+}
