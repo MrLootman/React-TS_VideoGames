@@ -32,50 +32,14 @@ header > nav > a {
 /* Main part */
 
 #app {
-  margin: 80px 0 0 0;
+  margin: 60px 0 0 0;
   display: flex;
   justify-content: center;
-  gap: 32px;
   text-align: center;
+  flex-wrap: wrap;
+  gap: 32px;
 }
 
-#app > section > p {
-  height: 10%;
-  font-size: 1.5rem;
-}
-
-#app > section,
-#app > section > img {
-  transition: all 0.5s ease;
-}
-
-#app > section {
-  position: relative;
-  color: rgb(227, 227, 227);
-  background-color: rgb(49, 56, 56);
-  height: 400px;
-  box-shadow: 0 0 5px #3b3b3b;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-#app > section > img {
-  transform-origin: top center;
-  height: 80%;
-  width: 250px;
-  object-fit: cover;
-  transition: all 0.5s ease;
-}
-
-#app > section:hover {
-  cursor: pointer;
-  transform: scale(1.02);
-}
-
-#app > section:hover > img {
-  filter: brightness(1.2);
-}
-
-#app:has(section:hover) section:not(:hover) {
+#app:has(figure:hover) figure:not(:hover) {
   opacity: 0.5;
 }

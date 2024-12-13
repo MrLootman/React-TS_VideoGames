@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Card from "./components/Card/Card";
+import type { VideoGamesI } from "./types/app";
 import "./App.css";
-
-interface VideoGamesI {
-  id: number;
-  name: string;
-  image: string;
-}
 
 function App() {
   const [data, setData] = useState<VideoGamesI[]>([]);
@@ -24,16 +21,14 @@ function App() {
           alt=""
         />
         <nav>
-          <a href="/">Home</a>
-          <a href="/about">About</a>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
         </nav>
       </header>
+
       <main id="app">
         {data.map((el) => (
-          <section key={el.id}>
-            <p>{el.name}</p>
-            <img src={el.image} alt={el.name} />
-          </section>
+          <Card key={el.name} name={el.name} image={el.image} />
         ))}
       </main>
     </>
