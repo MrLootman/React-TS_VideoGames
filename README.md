@@ -24,38 +24,48 @@ A toi de les disposer correctement pour faire en sorte que les trois jeux vidéo
 
 #### 1.
 
+```typescript
 import videoGamesActions from "./modules/videoGames/videoGamesActions";
 
 router.get("/api/video-games", videoGamesActions.browse);
+```
 
 #### 2.
 
+```typescript
 async readAll() {
   const [rows] = await databaseClient.query<Rows>("SELECT * FROM video_game");
 
   return rows;
 }
+```
 
 #### 3.
 
+```typescript
 const browse: RequestHandler = async (req, res) => {
   const videoGames = await videoGamesRepository.readAll();
 
   // ...
 };
+```
 
 #### 4. 
-
+```typescript
 import type { RequestHandler } from "express";
 
 import videoGamesRepository from "./videoGamesRepository";
+```
 
 #### 5.
 
+```typescript
 export default { browse };
+```
 
 #### 6.
 
+```typescript
 class VideoGamesRepository {
   async readAll() {
     const [rows] = await databaseClient.query<Rows>("SELECT * FROM video_game");
@@ -63,25 +73,33 @@ class VideoGamesRepository {
     // ...
   }
 }
+```
 
 #### 7.
 
+```typescript
 import databaseClient from "../../../database/client";
 
 import type { Rows } from "../../../database/client";
+```
 
 #### 8.
 
+```typescript
 res.json(videoGames);
+```
 
 ### 9.
 
+```typescript
 return rows;
+```
 
 ### 10.
 
+```typescript
 export default new VideoGamesRepository();
-
+```
 ---
 
 ### Mais... Faut penser à quoi déjà ?! 🤔
