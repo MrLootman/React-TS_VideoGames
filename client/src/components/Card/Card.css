@@ -6,6 +6,7 @@ figure {
   overflow: hidden;
   border-radius: 8px;
   height: 400px;
+  width: 275px;
 }
 
 figure {
@@ -14,6 +15,8 @@ figure {
 
 figure > img {
   height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 figure:hover {
