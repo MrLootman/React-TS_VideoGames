@@ -7,10 +7,11 @@ connectées en base de donnée !
 
 Tout d'abord :
 
-1. Copie / colle le fichier `.env.sample`, et renomme la copie en `.env`.
-2. Mets à jour tes informations de connexion à ta base de données.
-3. Exécute la commande `npm run db:migrate` pour exécuter le script se trouvant dans `server/database/schema.sql`.
-4. Exécute la commande `npm run dev` pour lancer le client et le server.
+1. Exécute la commande `npm install` pour installer toutes les dépendances nécessaires au projet. 
+2. Copie / colle le fichier `.env.sample`, et renomme la copie en `.env`.
+3. Mets à jour tes informations de connexion à ta base de données.
+4. Exécute la commande `npm run db:migrate` pour exécuter le script se trouvant dans `server/database/schema.sql`.
+5. Exécute la commande `npm run dev` pour lancer le client et le server.
 
 ## 🧠 _Exercice_ :
 
