@@ -1,11 +1,1 @@
 GET http://localhost:3310/api/video-game
-
-###
-
-POST http://localhost:3310/api/video-game HTTP/1.1
-content-type: application/json
-
-{
-  "name": "Call of Duty",
-  "image": "https://upload.wikimedia.org/wikipedia/en/c/c9/Call_of_Duty_Black_Ops_6_Key_Art.png"
-}
