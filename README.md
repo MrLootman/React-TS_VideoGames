@@ -2,7 +2,7 @@
 
 ---
 
-Dans cet atelier, tu vas devoir composer et réussir tout première requête GET, avec des informations
+Dans cet atelier, tu vas devoir composer et réussir ta toute première requête GET, avec des informations
 connectées en base de donnée !
 
 Tout d'abord :
