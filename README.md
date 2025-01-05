@@ -21,7 +21,7 @@ A toi de les disposer correctement pour faire en sorte que les trois jeux vidéo
 
 ⚠️ __Choses importantes à savoir__ :
 
-Pour pouvoir transmettre de la donnée du client vers le serveur, il faut impérativement activé un middleware intitulé `express.json()`. Celui-ci se trouve dans le fichier `server/src/app.ts`. La ligne est déjà codée, tu n'auras juste qu'à la décommenter pour la rendre active.
+Pour pouvoir transmettre de la donnée du client vers le serveur, il faut impérativement activer un middleware intitulé `express.json()`. Celui-ci se trouve dans le fichier `server/src/app.ts`. La ligne est déjà codée, tu n'auras juste qu'à la décommenter pour la rendre active.
 
 Tu pourras tester ta requête en installant l'extension VS Code `Rest Client`. Consulte le fichier `client.http` une fois les pièces du puzzle réunies, et tente la requête POST en cliquant sur le `Send Request` écrit au dessus de celle-ci.
 
