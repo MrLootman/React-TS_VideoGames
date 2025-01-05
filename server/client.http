@@ -1,1 +1,11 @@
 GET http://localhost:3310/api/video-game
+
+###
+
+POST http://localhost:3310/api/video-game HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Dark Souls III",
+    "image": "https://i.jeuxactus.com/datas/jeux/d/a/dark-souls-3/l/dark-souls-3-55a385d090a86.jpg"
+}
