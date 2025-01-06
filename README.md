@@ -9,7 +9,7 @@ Tout d'abord :
 
 1. Exécute la commande `npm install` pour installer toutes les dépendances nécessaires au projet. 
 2. Copie / colle le fichier `.env.sample`, et renomme la copie en `.env`.
-3. Mets à jour les valeurs des variables `DB_USER` et `DB_USER` avec les informations te permettant de te connecter à MySQL. Egalement, mets à jour la valeur de la variable `DB_NAME`.
+3. Mets à jour les valeurs des variables `DB_USER` et `DB_PASSWORD` avec les informations te permettant de te connecter à MySQL. Egalement, mets à jour la valeur de la variable `DB_NAME`.
 4. Exécute la commande `npm run db:migrate` pour exécuter le script se trouvant dans `server/database/schema.sql`.
 5. Exécute la commande `npm run dev` pour lancer le client et le server.
 
