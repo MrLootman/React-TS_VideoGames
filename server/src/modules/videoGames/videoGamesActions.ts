@@ -8,4 +8,22 @@ const browse: RequestHandler = async (req, res) => {
   res.json(videoGames);
 };
 
-export default { browse };
+const add: RequestHandler = async (req, res) => {
+  try {
+    const addVideoGame = await videoGamesRepository.create(req.body);
+
+    if (addVideoGame) {
+      res
+        .status(201)
+        .send(
+          `Video game named ${req.body.name} has been created successfully`,
+        );
+    } else {
+      res.status(404).send("An error occured");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export default { browse, add };
