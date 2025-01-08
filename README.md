@@ -2,8 +2,17 @@
 
 ---
 
-Dans cet atelier, tu vas devoir composer et réussir ta toute première requête GET, avec des informations
-connectées en base de donnée !
+Jusqu'à présent, tu es parvenu à composer :
+    - La requête GET (pour récupérer l'intégralité des jeux vidéos inscrits dans la base de donnée)
+    - La requête POST (pour créer un nouveau jeu). 
+
+Dans cet atelier, tu vas devoir composer une requête PUT !
+
+La méthode HTTP _PUT_ peut servir deux objectif : 
+    - Créer une nouvelle ressource (comme un POST).
+    - *Remplacer une ressource existante*.
+
+C'est bien le remplacement qui va nous intéresser !
 
 Tout d'abord :
 
