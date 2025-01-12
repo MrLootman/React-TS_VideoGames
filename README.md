@@ -3,16 +3,89 @@
 ---
 
 Jusqu'à présent, tu es parvenu à composer :
-    - La requête GET (pour récupérer l'intégralité des jeux vidéos inscrits dans la base de donnée)
+    - La requête GET (pour récupérer l'intégralité des jeux vidéos inscrits dans la base de donnée).
     - La requête POST (pour créer un nouveau jeu). 
+    - La requête PUT (pour mettre à jour un jeu vidéo).
 
-Dans cet atelier, tu vas devoir composer une requête PUT !
+    - L'une permettant de récupérer les utilisateurs.
+    - L'autre permettant de créer son compte.
 
-La méthode HTTP _PUT_ peut servir deux objectif : 
-    - Créer une nouvelle ressource (comme un POST).
-    - *Remplacer une ressource existante*.
+## 1. Créer un jeu de données
 
-C'est bien le remplacement qui va nous intéresser !
+Pour commencer avec la récupération des utilisateurs, tu vas devoir créer un jeu de données.
+.
+Pour cela, tu vas devoir éditer le fichier `schema.sql`, et ajouter les lignes concernant la création d'une table `user`, puis insérer au moins deux utilisateurs.
+
+La table devra comporter au moins le champ `email` (VARCHAR 55) et le champ `password` (VARCHAR 255).
+
+#### Euh... Pourquoi 255 pour le mot de passe ? 🤔
+
+Eh bien c'est assez simple: Nous prévoyons toujours une grande capacité pour le mot de passe. En effet, dans l'idée, nous voulons l'information saisie par l'utilisateur soit transformée en une chaîne de caractère complexe et unique (on appelle ça un _hash_).
+
+Pour comprendre à quoi ça ressemble, tu peux te rendre sur ce [lien](https://argon2.online/) pour écrire un mot de passe (essaye donc avec "1234") pour générer un hash.
+
+‼️ Avant de cliquer sur le bouton `GENERATE HASH`, penses à cliquer sur la roue crantée comportant le label _Salt_.
+La génération d'un _sel_ unique va augmenter la robustesse du mot de passe, et éviter notamment des attaques _brute force_ même les plus élaborées.
+
+<ins>En résumé</ins>: 
+
+__Jamais au grand jamais__ nous n'enregistrons des mots de passe en clair dans la base de données.
+Par exemple, si un utilisateur entre "j'aimelagalette" dans le champ password de son formulaire d'inscription, il _faut_ que la valeur renseignée en base de données soit hashée.
+
+_Dans le cadre de cet exercice_: Pour l'insertion du premier jeu de donnée dans le fichier `schema.sql`, privilégie un hash plutôt qu'un mot de passe ordinaire. Ce n'est que dans un second temps que nous rendrons opérationnel le processus de hashage.
+
+    ❓<ins>Exemple</ins> : ("martine@gmail.com", "$argon2i$v=19$m=16,t=2,p=1$SXlQOHJldEljWDhKSWQ4dA$GcxBGY8SJ9lk4NJ5ywkuGQ")
+
+L'exercice est terminé lorsque tu seras parvenu à effectuer la commande `npm run db:migrate` en insérant au moins deux utilisateurs avec leur email et leur mot de passe hashé "à la main".
+
+## 2. Récupérer les utilisateurs
+
+Inspire-toi de la manière dont le code est pensé pour la table `video_game` pour pouvoir récupérer (GET) tous les utilisateurs.
+
+L'exercice est terminé lorsque tu seras en capacité d'exécuter la requête avec le fichier `client.http`.
+
+## 3. Créer des utilisateurs
+
+Inspire-toi de la manière dont le code est pensé pour la table `video_game` pour pouvoir créer (POST) un nouvel utilisateur.
+
+L'exercice est terminé lorsque tu seras en capacité d'exécuter la requête avec le fichier `client.http`. Pour rappel: Tu dois transmettre un corps de requête au format JSON pour créer ce nouvel utilisateur.
+
+        ❓<ins>Exemple</ins> : { "martine@gmail.com", "1234" }
+
+## 4. Le middleware hashedPassword
+ 
+Nous pouvons désormais créer un compte... Sauf qu'en l'état, rien ne permet de convertir la chaîne de caractère qu'est le mot de passe en un hash !
+
+Commence donc par installer la dépendance argon2 :
+
+```bash
+    npm install argon2
+```
+
+En cliquant sur ce [lien](https://www.npmjs.com/package/argon2), et en t'inspirant des quelques lignes de code nécessaires, tu vas devoir créer un middleware intitulé `hashPassword`.
+
+Tu vas pouvoir créer un dossier `services`, et y créer un fichier `auth.ts`. C'est dans ce fichier que se tiendront tous les middleware ayant un lien avec l'authentification (création de compte ou connexion).
+
+Au bout du compte, tu vas devoir adapter le fichier `router.ts`, et écrire ou adapter les lignes suivantes:
+
+```typescript
+    import auth from "./services/auth";
+
+    router.post("/api/user", auth.hashPassword, userActions.add);
+```
+
+## 5. Le middleware registerValidation
+
+Super ! Rendu à cette étape, tu sais que le mot de passe arrive hashé en base de données.
+
+Oui mais... De gros problèmes persistent:
+    - Un utilisateur peut complètement écrire "1234", "qwerty" ou encore "password" et donc s'exposer à une attaque _brute force_.
+    - Un utilisateur peut s'enregistrer plusieurs fois avec la même adresse mail.
+
+
+
+
+
 
 Tout d'abord :
 

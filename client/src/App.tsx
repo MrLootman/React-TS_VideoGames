@@ -8,7 +8,7 @@ function App() {
   const [data, setData] = useState<VideoGamesI[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3310/api/video-game")
+    fetch(`${import.meta.env.VITE_API_URL}/api/video-game`)
       .then((res) => res.json())
       .then((videoGames) => setData(videoGames));
   }, []);
