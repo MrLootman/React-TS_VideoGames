@@ -1,0 +1,16 @@
+.create-video-game {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-video-game label {
+  color: white;
+  display: block;
+  margin: 16px 0 8px 0;
+}
+
+.create-video-game input {
+  font-size: 20px;
+}

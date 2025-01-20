@@ -22,7 +22,8 @@ function App() {
         />
         <nav>
           <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
+          <Link to="/create">Créer un jeu</Link>
+          <Link to="/login">Se connecter</Link>
         </nav>
       </header>
 

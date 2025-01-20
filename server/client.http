@@ -20,6 +20,16 @@ POST http://localhost:3310/api/user HTTP/1.1
 content-type: application/json
 
 {
-    "email": "jean@gmail.com",
-    "password": "039484093URLKfe"
+    "email": "nicolas@gmail.com",
+    "password": "1234!!!!A"
+}
+
+###
+
+POST http://localhost:3310/api/user/auth HTTP/1.1
+content-type: application/json
+
+{
+    "email": "nicolas@gmail.com",
+    "password": "1234!!!!A"
 }

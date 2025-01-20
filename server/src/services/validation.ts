@@ -1,3 +1,4 @@
+import argon2 from "argon2";
 import type { RequestHandler } from "express";
 import { body, validationResult } from "express-validator";
 import userRepository from "../modules/user/userRepository";
@@ -27,4 +28,41 @@ const registerValidation: RequestHandler = (req, res, next) => {
   res.status(422).json({ errors: errors.array() });
 };
 
-export default { checkRegister, registerValidation };
+const checkPerson: RequestHandler = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+
+    const checkEmail = await userRepository.findIfEmailExists(email);
+
+    if (checkEmail) {
+      req.body.hashedPassword = checkEmail[0].password;
+      next();
+    } else {
+      res.sendStatus(403);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const checkPassword: RequestHandler = async (req, res, next) => {
+  try {
+    const { password, hashedPassword } = req.body;
+    if (await argon2.verify(hashedPassword, password)) {
+      req.body.password = "";
+
+      next();
+    } else {
+      res.sendStatus(403);
+    }
+  } catch (err) {
+    console.warn(err);
+  }
+};
+
+export default {
+  checkRegister,
+  checkPerson,
+  checkPassword,
+  registerValidation,
+};
