@@ -1,3 +1,14 @@
+CREATE TABLE user (
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  email VARCHAR(50) NOT NULL,
+  password VARCHAR(200) NOT NULL
+);
+
+INSERT INTO user (email, password)
+VALUES
+  ("jeanluc@gmail.com", "$argon2id$v=19$m=16,t=2,p=1$RHpncmpkRW5lRzNzTHlydw$ReZYEe5Y6ERnDVHVdlCoug");
+
+
 CREATE TABLE video_game (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name VARCHAR(50),
