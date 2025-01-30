@@ -1,6 +1,6 @@
 CREATE TABLE video_game (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  name VARCHAR(50),
+  name VARCHAR(100),
   image VARCHAR(255)
 );
 

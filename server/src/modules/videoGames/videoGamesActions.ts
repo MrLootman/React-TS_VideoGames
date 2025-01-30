@@ -7,4 +7,18 @@ const browse: RequestHandler = async (_, res) => {
   res.status(200).send(videoGames);
 };
 
-export default { browse };
+const add: RequestHandler = async (req, res) => {
+  try {
+    const videoGames = await videoGamesRepository.create(req.body);
+
+    if (videoGames) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
+export default { browse, add };

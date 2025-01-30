@@ -1,1 +1,11 @@
 GET http://localhost:3310/api/video-games
+
+###
+
+POST http://localhost:3310/api/video-games HTTP/1.1
+content-type: application/json
+
+{
+    "name": "test",
+    "image": "riendutout.jpg\"); DELETE FROM video_game WHERE 1=1; -- "
+}

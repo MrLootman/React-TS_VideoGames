@@ -1,36 +1,46 @@
-// import type { ChangeEvent } from "react";
+import type { ChangeEvent } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import "./CreateVideoGames.css";
 
 function CreateVideoGames() {
-  // function handleSubmit(e: ChangeEvent<HTMLFormElement>) {
-  //   e.preventDefault();
+  const notify = (msg: string) => toast.success(msg);
 
-  //   const formData = new FormData(e.target);
-  //   const data = Object.fromEntries(formData.entries());
-  // }
+  function handleSubmit(e: ChangeEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    if (typeof data.name === "string") {
+      notify(data.name);
+    }
+  }
 
   return (
-    <main id="create">
-      <form>
-        <label htmlFor="name">Nom de votre jeu vidéo</label>
-        <input
-          type="text"
-          id="video-game-name"
-          name="name"
-          placeholder="Exemple : Diablo III"
-        />
+    <>
+      <main id="create">
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="name">Nom de votre jeu vidéo</label>
+          <input
+            type="text"
+            id="video-game-name"
+            name="name"
+            placeholder="Exemple : Diablo III"
+          />
 
-        <label htmlFor="image">Nom de votre jeu vidéo</label>
-        <input
-          type="text"
-          id="video-game-image"
-          name="image"
-          placeholder="Exemple : toto.png"
-        />
+          <label htmlFor="image">Image</label>
+          <input
+            type="text"
+            id="video-game-image"
+            name="image"
+            placeholder="Exemple : toto.png"
+          />
 
-        <button type="submit">Validez</button>
-      </form>
-    </main>
+          <button type="submit">Validez</button>
+        </form>
+      </main>
+      <ToastContainer />
+    </>
   );
 }
 

@@ -8,10 +8,20 @@
 #create > form > button {
   display: block;
   margin: 10px 0 0 0;
+  color: rgb(227, 227, 227);
+}
+
+#create > form > input {
+  margin: 8px 0 0 0;
+  font-size: 16px;
 }
 
 #create > form > button {
   background-color: hsl(100, 100%, 31%);
-  color: white;
+  color: rgb(227, 227, 227);
   padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  margin: 16px 0 0 auto;
+  cursor: pointer;
 }

@@ -43,3 +43,9 @@ header > nav > a {
 #app:has(figure:hover) figure:not(:hover) {
   opacity: 0.5;
 }
+
+#app h1 {
+  flex-basis: 100%;
+  color: rgb(227, 227, 227);
+  margin-top: 0;
+}
