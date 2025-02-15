@@ -14,6 +14,8 @@ function App() {
       .then((videoGames) => setData(videoGames));
   }, []);
 
+  console.warn(data);
+
   return (
     <>
       <header>

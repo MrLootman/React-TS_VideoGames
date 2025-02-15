@@ -21,4 +21,14 @@ const add: RequestHandler = async (req, res) => {
   }
 };
 
-export default { browse, add };
+const upload: RequestHandler = (req, res, next) => {
+  if (req.file?.filename) {
+    req.body.image = `/assets/images/${req.file.filename}`;
+
+    next();
+  } else {
+    res.sendStatus(400);
+  }
+};
+
+export default { browse, add, upload };

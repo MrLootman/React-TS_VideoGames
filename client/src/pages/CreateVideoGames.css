@@ -11,9 +11,10 @@
   color: rgb(227, 227, 227);
 }
 
-#create > form > input {
+#create > form > input:last-of-type {
   margin: 8px 0 0 0;
   font-size: 16px;
+  color: white;
 }
 
 #create > form > button {

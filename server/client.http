@@ -9,3 +9,42 @@ content-type: application/json
     "name": "test",
     "image": "riendutout.jpg\"); DELETE FROM video_game WHERE 1=1; -- "
 }
+
+###
+
+# POST http://localhost:3310/api/video-games/upload
+# Content-Type: multipart/form-data; boundary=Boundary123
+
+# --Boundary123
+# Content-Disposition: form-data; name="file"; filename="petit-chat.jpg"
+# Content-Type: image/jpg
+
+# < ./public/assets/upload/petit-chat.jpg
+# --Boundary123--
+
+###
+
+# POST http://localhost:3310/api/video-games/upload
+# Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+# ------WebKitFormBoundary7MA4YWxkTrZu0gW
+# Content-Disposition: form-data; name="file"; filename="petit-chat.jpg"
+# Content-Type: image/jpg
+
+# < ./public/assets/upload/petit-chat.jpg
+# ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+POST http://localhost:3310/api/video-games/upload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="petit-chat.jpg"
+Content-Type: image/jpg
+
+< ./public/assets/upload/petit-chat.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="name"
+
+Mon petit chat trop mim's
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+

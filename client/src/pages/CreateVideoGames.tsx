@@ -5,14 +5,21 @@ import "./CreateVideoGames.css";
 function CreateVideoGames() {
   const notify = (msg: string) => toast.success(msg);
 
-  function handleSubmit(e: ChangeEvent<HTMLFormElement>) {
+  async function handleSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
 
-    if (typeof data.name === "string") {
-      notify(data.name);
+    const response = await fetch(
+      "http://localhost:3310/api/video-games/upload",
+      {
+        method: "POST",
+        body: formData,
+      },
+    );
+
+    if (response.ok) {
+      notify("Tu as réussi à créer un jeu !");
     }
   }
 
@@ -29,12 +36,7 @@ function CreateVideoGames() {
           />
 
           <label htmlFor="image">Image</label>
-          <input
-            type="text"
-            id="video-game-image"
-            name="image"
-            placeholder="Exemple : toto.png"
-          />
+          <input type="file" name="file" />
 
           <button type="submit">Validez</button>
         </form>
