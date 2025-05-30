@@ -1,0 +1,18 @@
+/* Header part */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+header > img {
+  height: 60px;
+}
+
+header > nav > a {
+  color: rgb(227, 227, 227);
+  text-decoration: none;
+  margin: 0 0 0 1rem;
+}
