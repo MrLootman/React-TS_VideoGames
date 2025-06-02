@@ -34,10 +34,10 @@ router.get("/video-games", videoGamesAction.browse);
 #### 2.
 
 ```typescript
-async readAll() {
-  const [rows] = await databaseClient.query<Rows>("SELECT * FROM video_game");
+const browse: RequestHandler = async (req, res) => {
+  const videoGames = await videoGamesRepository.readAll();
 
-  return rows;
+  // ...
 }
 ```
 
