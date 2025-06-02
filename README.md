@@ -17,7 +17,9 @@ Tout d'abord :
 
 Ci-dessous, tu trouveras des fragments de code.
 
-A toi de les disposer correctement pour faire en sorte que les trois jeux vidéos apparaissent côté client !
+A toi de les disposer correctement pour être en mesure de récupérer un seul jeu côté client !
+
+💡 A noter que tu peux simuler la requête client avec le logiciel _Bruno_ 🐶
 
 ---
 
