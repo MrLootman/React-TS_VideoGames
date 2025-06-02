@@ -26,70 +26,67 @@ A toi de les disposer correctement pour faire en sorte que les trois jeux vidéo
 #### 1.
 
 ```typescript
-import videoGamesAction from "./modules/videoGames/videoGamesAction";
+  async readById(id: string) {
+    // ...
 
-router.get("/video-games", videoGamesAction.browse);
+    return rows;
+  }
 ```
 
 #### 2.
 
 ```typescript
-const browse: RequestHandler = async (req, res) => {
-  const videoGames = await videoGamesRepository.readAll();
+export default { browse, read };
+```
+
+#### 3. 
+
+```typescript
+const read: RequestHandler = async (req, res) => {
+  const result = await videoGamesRepository.readById(req.params.id);
 
   // ...
 }
 ```
 
-#### 3. 
-```typescript
-import type { RequestHandler } from "express";
-
-import videoGamesRepository from "./videoGamesRepository";
-```
-
 #### 4.
 
 ```typescript
-export default { browse };
+  else {
+    res.status(404).json("This game doesn't exist");
+  }
 ```
 
 #### 5.
 
 ```typescript
-class VideoGamesRepository {
-  async readAll() {
-    const [rows] = await databaseClient.query<Rows>("SELECT * FROM video_game");
-
-    // ...
-  }
-}
+const [rows] = await // ...
 ```
 
 #### 6.
 
 ```typescript
-import databaseClient from "../../../database/client";
-
-import type { Rows } from "../../../database/client";
+  if (result.length !== 0) {
+    res.json(result);
+  } 
 ```
 
 #### 7.
 
 ```typescript
-res.json(videoGames);
+import databaseClient, { type Rows } from "../../../database/client";
 ```
 
 ### 8.
 
 ```typescript
-return rows;
+databaseClient.query<Rows>("SELECT * FROM video_game WHERE id = ?", [id]);
 ```
 
 ### 9.
 
 ```typescript
-export default new VideoGamesRepository();
+router.get("/video-games/:id", videoGamesAction.read);
 ```
 ---
 
