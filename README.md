@@ -26,9 +26,9 @@ A toi de les disposer correctement pour faire en sorte que les trois jeux vidéo
 #### 1.
 
 ```typescript
-import videoGamesActions from "./modules/videoGames/videoGamesActions";
+import videoGamesAction from "./modules/videoGames/videoGamesAction";
 
-router.get("/video-games", videoGamesActions.browse);
+router.get("/video-games", videoGamesAction.browse);
 ```
 
 #### 2.
