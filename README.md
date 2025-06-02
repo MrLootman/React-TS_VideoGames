@@ -41,30 +41,20 @@ async readAll() {
 }
 ```
 
-#### 3.
-
-```typescript
-const browse: RequestHandler = async (req, res) => {
-  const videoGames = await videoGamesRepository.readAll();
-
-  // ...
-};
-```
-
-#### 4. 
+#### 3. 
 ```typescript
 import type { RequestHandler } from "express";
 
 import videoGamesRepository from "./videoGamesRepository";
 ```
 
-#### 5.
+#### 4.
 
 ```typescript
 export default { browse };
 ```
 
-#### 6.
+#### 5.
 
 ```typescript
 class VideoGamesRepository {
@@ -76,7 +66,7 @@ class VideoGamesRepository {
 }
 ```
 
-#### 7.
+#### 6.
 
 ```typescript
 import databaseClient from "../../../database/client";
@@ -84,19 +74,19 @@ import databaseClient from "../../../database/client";
 import type { Rows } from "../../../database/client";
 ```
 
-#### 8.
+#### 7.
 
 ```typescript
 res.json(videoGames);
 ```
 
-### 9.
+### 8.
 
 ```typescript
 return rows;
 ```
 
-### 10.
+### 9.
 
 ```typescript
 export default new VideoGamesRepository();
