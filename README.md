@@ -1,4 +1,4 @@
-# Puzzle - Fait fonctionner le serveur !
+# Puzzle - Fais fonctionner le serveur !
 
 ---
 
