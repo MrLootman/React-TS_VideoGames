@@ -7,6 +7,15 @@ class VideoGamesRepository {
 
     return rows;
   }
+
+  async readById(id: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM video_game WHERE id = ?",
+      [id],
+    );
+
+    return rows[0];
+  }
 }
 
 export default new VideoGamesRepository();

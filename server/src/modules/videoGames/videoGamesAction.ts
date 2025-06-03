@@ -9,4 +9,14 @@ const browse: RequestHandler = async (req, res) => {
   res.json(result);
 };
 
-export default { browse };
+const read: RequestHandler = async (req, res) => {
+  const result = await videoGamesRepository.readById(req.params.id);
+
+  if (result) {
+    res.json(result);
+  } else {
+    res.status(404).json("This game doesn't exist");
+  }
+};
+
+export default { browse, read };
