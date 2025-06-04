@@ -20,6 +20,16 @@ Ci-dessous, tu trouveras des fragments de code.
 A toi de les disposer correctement pour être en mesure d'insérer un nouveau jeu vidéo dans la base de données !
 
 💡 A noter que tu peux simuler la requête client avec le logiciel _Bruno_ 🐶
+En sélectionnant le verbe HTTP POST pour le endpoint `http://localhost:3310/api/video-games`, tu vas pouvoir ajouter un corps de requête (un _body_) au format JSON. Tu pourras donc exécuter ta requête avec l'objet suivant :
+
+```json
+{
+  "name": "Super Meat Boy",
+  "image": "https://upload.wikimedia.org/wikipedia/en/a/aa/SuperMeatBoy_cover.png"
+}
+```
+
+Tu auras réussi l'exercice lorsque le message renvoyé par Bruno sera `"Super Meat Boy has been created"`.
 
 ---
 
@@ -64,10 +74,11 @@ router.post
 #### 7.
 
 ```typescript
-if (insertVideoGame) {
-  res.status(201).json(`${req.body.name} has been created`);
-} else {
-  res.status(404).json("Impossible to create a video game");
+  if (insertVideoGame) {
+    res.status(201).json(`${req.body.name} has been created`);
+  } else {
+    res.status(404).json("Impossible to create a video game");
+  }
 }
 ```
 
@@ -96,19 +107,16 @@ interface VideoGame {
 ### 11.
 
 ```typescript
-interface VideoGame {
-  name: string;
-  image: string;
+, [body.name, body.image]);
+
+  return result.affectedRows;
 }
 ```
 
 ### 12.
 
 ```typescript
-, [body.name, body.image]);
-
-  return result.affectedRows;
-}
+import databaseClient, { type Result, type Rows } from "../../../database/client";
 ```
 ---
 
