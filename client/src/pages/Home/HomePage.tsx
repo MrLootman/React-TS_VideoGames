@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 import Card from "../../components/Card/Card";
 
 function HomePage() {
@@ -11,9 +12,11 @@ function HomePage() {
   }, []);
 
   return (
-    <main id="app">
+    <main className="app">
       {data.map((el) => (
-        <Card key={el.name} name={el.name} image={el.image} />
+        <Link key={el.id} to={`/detail/${el.id}`}>
+          <Card name={el.name} image={el.image} />
+        </Link>
       ))}
     </main>
   );
