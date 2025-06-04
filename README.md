@@ -17,7 +17,7 @@ Tout d'abord :
 
 Ci-dessous, tu trouveras des fragments de code.
 
-A toi de les disposer correctement pour être en mesure de récupérer un seul jeu côté client !
+A toi de les disposer correctement pour être en mesure d'insérer un nouveau jeu vidéo dans la base de données !
 
 💡 A noter que tu peux simuler la requête client avec le logiciel _Bruno_ 🐶
 
@@ -28,67 +28,87 @@ A toi de les disposer correctement pour être en mesure de récupérer un seul j
 #### 1.
 
 ```typescript
-  async readById(id: string) {
-    // ...
-
-    return rows;
-  }
+async (req, res) =>  {
 ```
 
 #### 2.
 
 ```typescript
-export default { browse, read };
+("/video-games", videoGamesAction.add);
 ```
 
 #### 3. 
 
 ```typescript
-const read: RequestHandler = async (req, res) => {
-  const result = await videoGamesRepository.readById(req.params.id);
-
-  // ...
-}
+const [result] = await databaseClient.query<Result>("INSERT INTO video_game (name, image) VALUES (?, ?)"
 ```
 
 #### 4.
 
 ```typescript
-  else {
-    res.status(404).json("This game doesn't exist");
-  }
+export default { browse, read, add };
 ```
 
 #### 5.
 
 ```typescript
-const [rows] = await // ...
+const add: RequestHandler =
 ```
 
 #### 6.
 
 ```typescript
-  if (result.length !== 0) {
-    res.json(result);
-  } 
+router.post
 ```
 
 #### 7.
 
 ```typescript
-import databaseClient, { type Rows } from "../../../database/client";
+if (insertVideoGame) {
+  res.status(201).json(`${req.body.name} has been created`);
+} else {
+  res.status(404).json("Impossible to create a video game");
+}
 ```
 
-### 8.
+#### 8.
 
 ```typescript
-databaseClient.query<Rows>("SELECT * FROM video_game WHERE id = ?", [id]);
+async create(body: VideoGame) {
+
 ```
 
 ### 9.
 
 ```typescript
-router.get("/video-games/:id", videoGamesAction.read);
+const insertVideoGame = await videoGamesRepository.create(req.body);
+```
+
+### 10.
+
+```typescript
+interface VideoGame {
+  name: string;
+  image: string;
+}
+```
+
+### 11.
+
+```typescript
+interface VideoGame {
+  name: string;
+  image: string;
+}
+```
+
+### 12.
+
+```typescript
+, [body.name, body.image]);
+
+  return result.affectedRows;
+}
 ```
 ---
 
