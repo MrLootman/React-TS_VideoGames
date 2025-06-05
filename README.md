@@ -40,7 +40,7 @@ async (req, res) =>  {
 #### 2.
 
 ```typescript
-("/video-games/:id", videoGamesAction.add);
+("/video-games/:id", videoGamesAction.destroy);
 ```
 
 #### 3. 
@@ -71,7 +71,7 @@ router.delete
 
 ```typescript
   if (deleteVideoGame) {
-    res.status(200).json(`A video game has been successfully deleted !`);
+    res.status(200).json("A video game has been successfully deleted !");
   } else {
     res.status(404).json("Impossible to delete a video game");
   }
