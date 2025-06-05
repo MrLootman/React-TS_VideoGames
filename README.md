@@ -17,19 +17,15 @@ Tout d'abord :
 
 Ci-dessous, tu trouveras des fragments de code.
 
-A toi de les disposer correctement pour être en mesure d'insérer un nouveau jeu vidéo dans la base de données !
+A toi de les disposer correctement pour être en mesure de supprimer un jeu vidéo existant dans la base de données !
+
+__Cependant !__ 😩 Gros problème : La requête SQL n'a pas été rédigée ! Il va te falloir trouver par toi-même comment écrire cette requête, en t'inspirant de la façon de faire des autres requêtes déjà existantes dans ce projet.
 
 💡 A noter que tu peux simuler la requête client avec le logiciel _Bruno_ 🐶
-En sélectionnant le verbe HTTP POST pour le endpoint `http://localhost:3310/api/video-games`, tu vas pouvoir ajouter un corps de requête (un _body_) au format JSON. Tu pourras donc exécuter ta requête avec l'objet suivant :
 
-```json
-{
-  "name": "Super Meat Boy",
-  "image": "https://upload.wikimedia.org/wikipedia/en/a/aa/SuperMeatBoy_cover.png"
-}
-```
+En sélectionnant le verbe HTTP `DELETE` et le endpoint `http://localhost:3310/api/video-games/3`, tu vas pouvoir envoyer ta demande de suppression d'un jeu vidéo dont l'id est celui passé en paramètre d'URL.
 
-Tu auras réussi l'exercice lorsque le message renvoyé par Bruno sera `"Super Meat Boy has been created"`.
+Tu auras réussi l'exercice lorsque le message renvoyé par Bruno sera `"Hollow Knight has been deleted"`.
 
 ---
 
@@ -44,40 +40,40 @@ async (req, res) =>  {
 #### 2.
 
 ```typescript
-("/video-games", videoGamesAction.add);
+("/video-games/:id", videoGamesAction.add);
 ```
 
 #### 3. 
 
 ```typescript
-const [result] = await databaseClient.query<Result>("INSERT INTO video_game (name, image) VALUES (?, ?)"
+const [result] = await databaseClient.query<Result>("Requête SQL à écrire"
 ```
 
 #### 4.
 
 ```typescript
-export default { browse, read, add };
+export default { browse, read, add, destroy };
 ```
 
 #### 5.
 
 ```typescript
-const add: RequestHandler =
+const destroy: RequestHandler =
 ```
 
 #### 6.
 
 ```typescript
-router.post
+router.delete
 ```
 
 #### 7.
 
 ```typescript
-  if (insertVideoGame) {
-    res.status(201).json(`${req.body.name} has been created`);
+  if (deleteVideoGame) {
+    res.status(200).json(`A video game has been successfully deleted !`);
   } else {
-    res.status(404).json("Impossible to create a video game");
+    res.status(404).json("Impossible to delete a video game");
   }
 }
 ```
@@ -85,14 +81,14 @@ router.post
 #### 8.
 
 ```typescript
-async create(body: VideoGame) {
+async delete(id: string) {
 
 ```
 
 ### 9.
 
 ```typescript
-const insertVideoGame = await videoGamesRepository.create(req.body);
+const deleteVideoGame = await videoGamesRepository.delete(req.params.id);
 ```
 
 ### 10.
@@ -107,7 +103,7 @@ interface VideoGame {
 ### 11.
 
 ```typescript
-, [body.name, body.image]);
+, [id]);
 
   return result.affectedRows;
 }
