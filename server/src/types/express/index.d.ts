@@ -2,6 +2,10 @@
 export type {};
 
 declare global {
+  interface VideoGame {
+    name: string;
+    image: string;
+  }
   namespace Express {
     export interface Request {
       /* ************************************************************************* */

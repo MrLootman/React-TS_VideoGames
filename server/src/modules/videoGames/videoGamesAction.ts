@@ -19,4 +19,14 @@ const read: RequestHandler = async (req, res) => {
   }
 };
 
-export default { browse, read };
+const add: RequestHandler = async (req, res) => {
+  const result = await videoGamesRepository.create(req.body);
+
+  if (result) {
+    res.status(201).json(`${req.body.name} has been created successfully`);
+  } else {
+    res.status(404).json("This game doesn't exist");
+  }
+};
+
+export default { browse, read, add };

@@ -7,5 +7,6 @@ const router = express.Router();
 
 router.get("/video-games", videoGamesAction.browse);
 router.get("/video-games/:id", videoGamesAction.read);
+router.post("/video-games", videoGamesAction.add);
 
 export default router;

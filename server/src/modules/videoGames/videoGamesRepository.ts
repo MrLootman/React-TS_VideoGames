@@ -1,5 +1,8 @@
 // Fichier qui comportera les requêtes SQL relatives à la table video_game
-import databaseClient, { type Rows } from "../../../database/client";
+import databaseClient, {
+  type Result,
+  type Rows,
+} from "../../../database/client";
 
 class VideoGamesRepository {
   async readAll() {
@@ -15,6 +18,15 @@ class VideoGamesRepository {
     );
 
     return rows[0];
+  }
+
+  async create(body: VideoGame) {
+    const [rows] = await databaseClient.query<Result>(
+      "INSERT INTO video_game (name, image) VALUES (?, ?)",
+      [body.name, body.image],
+    );
+
+    return rows.affectedRows;
   }
 }
 
