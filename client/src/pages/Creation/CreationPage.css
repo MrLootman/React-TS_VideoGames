@@ -13,6 +13,10 @@ label {
   margin: 8px 0;
 }
 
+input {
+  color: black;
+}
+
 button {
   margin: 16px 0 0 0;
   cursor: pointer;

@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 
 // Import the main app component
 import App from "./App";
+import CreationPage from "./pages/Creation/CreationPage";
 import DetailsPage from "./pages/Details/DetailsPage";
 import HomePage from "./pages/Home/HomePage";
 import LoginPage from "./pages/Login/LoginPage";
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/detail/:id",
         element: <DetailsPage />,
+      },
+      {
+        path: "/create",
+        element: <CreationPage />,
       },
     ],
   },
