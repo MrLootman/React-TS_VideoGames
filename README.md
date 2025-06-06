@@ -25,7 +25,7 @@ __Cependant !__ 😩 Gros problème : La requête SQL n'a pas été rédigée ! 
 
 En sélectionnant le verbe HTTP `DELETE` et le endpoint `http://localhost:3310/api/video-games/3`, tu vas pouvoir envoyer ta demande de suppression d'un jeu vidéo dont l'id est celui passé en paramètre d'URL.
 
-Tu auras réussi l'exercice lorsque le message renvoyé par Bruno sera `"Hollow Knight has been deleted"`.
+Tu auras réussi l'exercice lorsque le message renvoyé par Bruno sera `"A video game has been successfully deleted !"`.
 
 ---
 
