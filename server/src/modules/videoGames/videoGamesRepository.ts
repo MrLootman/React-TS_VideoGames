@@ -28,6 +28,15 @@ class VideoGamesRepository {
 
     return rows.affectedRows;
   }
+
+  async delete(id: string) {
+    const [result] = await databaseClient.query<Result>(
+      "DELETE FROM video_game WHERE id = ?",
+      [id],
+    );
+
+    return result.affectedRows;
+  }
 }
 
 export default new VideoGamesRepository();

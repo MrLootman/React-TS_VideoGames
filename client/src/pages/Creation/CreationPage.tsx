@@ -1,6 +1,11 @@
+import { toast } from "react-toastify";
 import "./CreationPage.css";
 
 function CreationPage() {
+  const success = () =>
+    toast.success("Bravo, vous avez réussi à créer un nouveau jeu 🎉");
+  const error = () => toast.error("Râté 😩");
+
   const handleSubmit = (data: FormData) => {
     const formData = JSON.stringify(Object.fromEntries(data));
 
@@ -10,7 +15,7 @@ function CreationPage() {
         "Content-Type": "application/json",
       },
       body: formData,
-    });
+    }).then((res) => (res.ok ? success() : error()));
   };
 
   return (

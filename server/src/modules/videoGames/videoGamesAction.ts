@@ -20,6 +20,11 @@ const read: RequestHandler = async (req, res) => {
 };
 
 const add: RequestHandler = async (req, res) => {
+  if (req.body.name === "" || req.body.image === "") {
+    res.sendStatus(400);
+    return;
+  }
+
   const result = await videoGamesRepository.create(req.body);
 
   if (result) {
@@ -29,4 +34,14 @@ const add: RequestHandler = async (req, res) => {
   }
 };
 
-export default { browse, read, add };
+const destroy: RequestHandler = async (req, res) => {
+  const deleteVideoGame = await videoGamesRepository.delete(req.params.id);
+
+  if (deleteVideoGame) {
+    res.status(200).json("A video game has been successfully deleted !");
+  } else {
+    res.status(404).json("Impossible to delete a video game");
+  }
+};
+
+export default { browse, read, add, destroy };
