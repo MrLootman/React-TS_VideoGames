@@ -15,111 +15,34 @@ Tout d'abord :
 
 ## 🧠 _Exercice_ :
 
-Ci-dessous, tu trouveras des fragments de code.
+A présent, nous allons envisager une partie importante de l'application : **la possibilité pour un•e utilisateur•rice de se créer un compte**.
 
-A toi de les disposer correctement pour être en mesure de supprimer un jeu vidéo existant dans la base de données !
+Dans un premier temps, nous allons concevoir une possibilité de se créer un compte en nous appuyant sur nos connaissances actuelles.
 
-__Cependant !__ 😩 Gros problème : La requête SQL n'a pas été rédigée ! Il va te falloir trouver par toi-même comment écrire cette requête, en t'inspirant de la façon de faire des autres requêtes déjà existantes dans ce projet.
+Tu vas donc devoir :
 
-💡 A noter que tu peux simuler la requête client avec le logiciel _Bruno_ 🐶
+- Faire évoluer le fichier `schema.sql` pour faire apparaître une table `user`, avec au moins les champs suivants :
+  - id
+  - email
+  - password
 
-En sélectionnant le verbe HTTP `DELETE` et le endpoint `http://localhost:3310/api/video-games/3`, tu vas pouvoir envoyer ta demande de suppression d'un jeu vidéo dont l'id est celui passé en paramètre d'URL.
+- Créer la logique avec le microframework `Express` permettant d'insérer une ligne dans la table `user`, le tout avec le client `bruno`. En d'autres termes, tu dois paramétrer une nouvelle requête depuis le logiciel `bruno`.
 
-Tu auras réussi l'exercice lorsque le message renvoyé par Bruno sera `"Hollow Knight has been deleted"`.
+Exemple :
+
+  - POST `http://localhost:3310/api/user`
 
 ---
 
-### Les pièces du puzzle 🧩
+Qui dit POST, dit opération d'écriture en base de données... dit corps de requête !
 
-#### 1.
+Un _body_ lui sera donné depuis `bruno` pour simuler une inscription :
 
-```typescript
-async (req, res) =>  {
-```
-
-#### 2.
-
-```typescript
-("/video-games/:id", videoGamesAction.destroy);
-```
-
-#### 3. 
-
-```typescript
-const [result] = await databaseClient.query<Result>("Requête SQL à écrire"
-```
-
-#### 4.
-
-```typescript
-export default { browse, read, add, destroy };
-```
-
-#### 5.
-
-```typescript
-const destroy: RequestHandler =
-```
-
-#### 6.
-
-```typescript
-router.delete
-```
-
-#### 7.
-
-```typescript
-  if (deleteVideoGame) {
-    res.status(200).json("A video game has been successfully deleted !");
-  } else {
-    res.status(404).json("Impossible to delete a video game");
-  }
+```json
+{
+  "email": "toto@gmail.com",
+  "password": "1234"
 }
 ```
 
-#### 8.
-
-```typescript
-async delete(id: string) {
-
-```
-
-### 9.
-
-```typescript
-const deleteVideoGame = await videoGamesRepository.delete(req.params.id);
-```
-
-### 10.
-
-```typescript
-interface VideoGame {
-  name: string;
-  image: string;
-}
-```
-
-### 11.
-
-```typescript
-, [id]);
-
-  return result.affectedRows;
-}
-```
-
-### 12.
-
-```typescript
-import databaseClient, { type Result, type Rows } from "../../../database/client";
-```
----
-
-### Mais... Faut penser à quoi déjà ?! 🤔
-
-1. Mon fichier .env côté serveur est-il à jour ? Contient-il des informations fiables pour me connecter à ma base de données SQL ?
-
-2. Mon script de base de données est-il valide ? Vérification avec `npm run db:migrate`
-
-3. Ai-je un jeu de données pour tester une requête ?
+A toi de jouer ! 🚀 Tente d'écrire le code avec ce que tu as retenu, et n'hésite pas à considérer le contenu des fichiers `videoGamesActions` et `videoGamesRepository`.
