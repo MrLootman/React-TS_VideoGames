@@ -1,6 +1,7 @@
 import express from "express";
 import userAction from "./modules/user/userAction";
 import videoGamesAction from "./modules/videoGames/videoGamesAction";
+import validation from "./utils/validation";
 
 const router = express.Router();
 
@@ -11,6 +12,6 @@ router.get("/video-games/:id", videoGamesAction.read);
 router.post("/video-games", videoGamesAction.add);
 router.delete("/video-games/:id", videoGamesAction.destroy);
 
-router.post("/user", userAction.add);
+router.post("/user", validation.userValidation, userAction.add);
 
 export default router;

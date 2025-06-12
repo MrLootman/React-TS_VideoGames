@@ -19,22 +19,17 @@ const read: RequestHandler = async (req, res) => {
   }
 };
 
-const add: RequestHandler = async (req, res, next) => {
+const add: RequestHandler = async (req, res) => {
   try {
-    if (req.body.name === "" || req.body.image === "") {
-      res.sendStatus(400);
-      return;
-    }
-
     const result = await videoGamesRepository.create(req.body);
 
     if (result) {
-      res.status(201).json(`${req.body.name} has been created successfully`);
+      res.status(201).json("A new game has been created successfully");
     } else {
       res.status(404).json("This game doesn't exist");
     }
   } catch (err) {
-    next(err);
+    res.status(500).json("Internal server error");
   }
 };
 
