@@ -20,6 +20,15 @@ class VideoGamesRepository {
     return rows[0];
   }
 
+  async update(body: VideoGame, id: string) {
+    const [rows] = await databaseClient.query<Result>(
+      "UPDATE video_game SET name = ?, image = ? WHERE id = ?",
+      [body.name, body.image, id],
+    );
+
+    return rows.affectedRows;
+  }
+
   async create(body: VideoGame) {
     const [rows] = await databaseClient.query<Result>(
       "INSERT INTO video_game (name, image) VALUES (?, ?)",

@@ -9,9 +9,13 @@ const router = express.Router();
 
 router.get("/video-games", videoGamesAction.browse);
 router.get("/video-games/:id", videoGamesAction.read);
+
+router.put("/video-games/:id", videoGamesAction.edit);
+
 router.post("/video-games", videoGamesAction.add);
 router.delete("/video-games/:id", videoGamesAction.destroy);
 
+router.get("/user", userAction.read);
 router.post("/user", validation.userValidation, userAction.add);
 
 export default router;

@@ -19,6 +19,20 @@ const read: RequestHandler = async (req, res) => {
   }
 };
 
+const edit: RequestHandler = async (req, res) => {
+  try {
+    const result = await videoGamesRepository.update(req.body, req.params.id);
+
+    if (result) {
+      res.status(201).json(`${req.body.name} has been updated successfully`);
+    } else {
+      res.status(404).json("This game doesn't exist");
+    }
+  } catch (err) {
+    res.status(500).json("Internal server error");
+  }
+};
+
 const add: RequestHandler = async (req, res) => {
   try {
     const result = await videoGamesRepository.create(req.body);
@@ -43,4 +57,4 @@ const destroy: RequestHandler = async (req, res) => {
   }
 };
 
-export default { browse, read, add, destroy };
+export default { browse, read, edit, add, destroy };
